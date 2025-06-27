@@ -17,6 +17,18 @@
 /* Top | Right | Bottom | Left */
             touch-action: none;  /* Pe containerul principal */
         }
+.twentytwenty-container img {
+    width: 100%;
+    height: auto;  /* Păstrează proporțiile */
+    object-fit: cover;  /* Taie excesul (opțional) */
+}
+      @media (min-width: 768px) {  /* Desktop */
+    .twentytwenty-container {
+        width: 80%;  /* Sau o dimensiune fixă (ex: 800px) */
+        margin: 0 auto;  /* Centrează */
+    }
+}  
+        
         /* Imagini */
         .twentytwenty-before-container {
             position: absolute;
