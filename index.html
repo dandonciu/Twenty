@@ -15,6 +15,7 @@
             overflow: hidden;
             margin: 20px 0 20px 20px; /* Elimină margin-auto pentru aliniere stânga */
 /* Top | Right | Bottom | Left */
+            touch-action: none;  /* Pe containerul principal */
         }
         /* Imagini */
         .twentytwenty-before-container {
@@ -58,6 +59,7 @@
             width: 30px;
             height: 100%;
             transform: translateX(-50%);
+            touch-action: pan-x;  /* Permite doar glisarea pe orizontală */
             cursor: ew-resize;
             z-index: 3;
         }
