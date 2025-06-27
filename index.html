@@ -8,18 +8,20 @@
     <style>
   
      /* Container principal aliniat la stânga */
-      .twentytwenty-container {
+     
+.twentytwenty-container {
+            width: 520px;
+            height: 396px;
+            position: relative;
+            overflow: hidden;
+            margin: 20px 0 20px 20px; /* Elimină margin-auto pentru aliniere stânga */
+/* Top | Right | Bottom | Left */
+        }
+    .twentytwenty-container {
     width: 100%;  /* Mobil */
     touch-action: none;
     overflow: hidden;
 }
-
-@media (min-width: 768px) {
-    .twentytwenty-container {
-        width: 80%;  /* Desktop */
-    }
-}
-        
         /* Imagini */
         .twentytwenty-before-container {
             position: absolute;
