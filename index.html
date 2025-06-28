@@ -114,11 +114,24 @@
             border: none; border-radius: 50px; cursor: pointer;
         }
     </style>
+
+<div style="position: absolute; left: 20px; bottom: 60px; width: 80%; z-index: 1000;">
+    <input 
+        type="range" 
+        id="volumeControl" 
+        min="0" 
+        max="1" 
+        step="0.1" 
+        value="0.3"
+        style="width: 100%"
+    >
+</div>
+
 </head>
 <body>
     <audio id="bgMusic" src="audio/Peter_Green.mp3"></audio>
     <button id="musicToggle">🔊 ON</button>
-
+<button id="musicToggle" class="off">🔇 OFF</button>
     <script>
         const bgMusic = document.getElementById('bgMusic');
         const musicToggle = document.getElementById('musicToggle');
@@ -133,9 +146,16 @@
             e.stopPropagation();
             bgMusic.paused ? bgMusic.play() : bgMusic.pause();
             musicToggle.textContent = bgMusic.paused ? '🔇 OFF' : '🔊 ON';
-            musicToggle.style.background = bgMusic.paused ? '#f44336' : '#4CAF50';
+            musicToggle.style.background = bgMusic.paused ? '#4CAF50' : '#f44336';
         });
     </script>
+
+<script>
+    // Control volum
+    document.getElementById('volumeControl').addEventListener('input', function(e) {
+        bgMusic.volume = e.target.value;
+    });
+</script>
 <!-- Container principal acum aliniat la stânga -->
 <div class="twentytwenty-container">
     <div class="twentytwenty-before-container">
@@ -195,6 +215,25 @@ bgMusic.addEventListener('ended', () => {
     musicToggle.textContent = '🔇 OFF';
     console.log("Muzica s-a terminat natural");
 });
+<div style="position: absolute; left: 20px; bottom: 60px; width: 80%; z-index: 1000;">
+    <input 
+        type="range" 
+        id="volumeControl" 
+        min="0" 
+        max="1" 
+        step="0.1" 
+        value="0.3"
+        style="width: 100%"
+    >
+</div>
+
+<script>
+    // Control volum
+    document.getElementById('volumeControl').addEventListener('input', function(e) {
+        bgMusic.volume = e.target.value;
+    });
+</script>
+
 </script>
 <script src="script.js"></script>
 <audio id="bgMusic" loop>
