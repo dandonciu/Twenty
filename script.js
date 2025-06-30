@@ -48,29 +48,26 @@ document.addEventListener('mouseup', stopDragging);
 document.addEventListener('touchend', stopDragging);
 
 
-const bgMusic = document.getElementById('bgMusic');
-const musicToggle = document.getElementById('musicToggle');
-const volumeControl = document.getElementById('volumeControl');
 
-// Buton ON/OFF
-musicToggle.addEventListener('click', () => {
-    if (bgMusic.paused) {
-        bgMusic.play();
-        musicToggle.textContent = '🔊 ON';
-        musicToggle.style.background = '#4CAF50';
-    } else {
-        bgMusic.pause();
-        musicToggle.textContent = '🔇 OFF';
-        musicToggle.style.background = '#f44336';
-    }
-});
+        const bgMusic = new Audio("audio/Peter_Green.mp3");
+        bgMusic.loop = true;
+        bgMusic.volume = 0.5;
 
-// Control volum
-volumeControl.addEventListener('input', () => {
-    bgMusic.volume = volumeControl.value;
-});
+        document.getElementById('musicToggle').addEventListener('click', function() {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                this.textContent = '🔊';
+                
+            } else {
+                bgMusic.pause();
+                this.textContent = '🔇';
+               
+            }
+        });
 
-// Permite redarea la primul click pe pagină
-document.addEventListener('click', () => {
-    bgMusic.volume = 0.5;
-}, { once: true });
+        document.getElementById('volumeControl').addEventListener('input', function() {
+            bgMusic.volume = this.value;
+        });
+
+        // Permite redarea la primul click pe pagină
+        document.addEventListener('click', () => bgMusic.play().catch(e => {}), { once: true });
