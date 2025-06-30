@@ -137,56 +137,7 @@
 
 <script src="script.js"></script>
     
-// Monitorizare evenimente audio
-Varianta 100% funcțională (cu debug inclus)// 
-<script>
-    const bgMusic = document.getElementById('bgMusic');
-const musicToggle = document.getElementById('musicToggle');
 
-// Inițializare
-bgMusic.volume = 0.3; // Setează volum mai mic
-let wasPlaying = false;
-
-// Butonul principal
-musicToggle.addEventListener('click', function() {
-    console.log("Stare înainte de click:", bgMusic.paused ? "pausat" : "redare");
-    
-    if (bgMusic.paused) {
-        bgMusic.play()
-            .then(() => {
-                musicToggle.textContent = '🔊 ON';
-                musicToggle.style.background = '#4CAF50';
-                wasPlaying = true;
-            })
-            .catch(e => {
-                console.error("Eroare play():", e);
-                alert("Browseru
-bgMusic.addEventListener('play', () => console.log("Muzica a început"));
-bgMusic.addEventListener('pause', () => console.log("Muzica oprită"));
-bgMusic.addEventListener('ended', () => {
-    musicToggle.textContent = '🔇 OFF';
-    console.log("Muzica s-a terminat natural");
-});
-<div style="position: absolute; left: 20px; bottom: 60px; width: 80%; z-index: 1000;">
-    <input 
-        type="range" 
-        id="volumeControl" 
-        min="0" 
-        max="1" 
-        step="0.1" 
-        value="0.3"
-        style="width: 100%"
-    >
-</div>
-
-<script>
-    // Control volum
-    document.getElementById('volumeControl').addEventListener('input', function(e) {
-        bgMusic.volume = e.target.value;
-    });
-</script>
-
-</script>
 
 <audio id="bgMusic" loop>
     <source src="audio/Peter_Green.mp3" type="audio/mpeg">
