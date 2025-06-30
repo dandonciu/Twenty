@@ -197,19 +197,7 @@ musicToggle.addEventListener('click', function() {
 });
 
 
-/* Poziționare responsive */
-@media (max-width: 768px) {
-    .twentytwenty-container {
-        margin-bottom: 60px; /* Spațiu pentru buton */
-    }
-    #musicToggle {
-        padding: 6px 12px;
-        font-size: 14px;
-    }
-    #volumeControl {
-        width: 80px !important;
-    }
-}
+
 
 
 
@@ -226,43 +214,17 @@ bgMusic.addEventListener('ended', () => {
     musicToggle.textContent = '🔇 OFF';
     console.log("Muzica s-a terminat natural");
 });
-
-
-<!-- Buton + volum (sub bara de control) -->
-<div style="
-    position: absolute;
-    left: 20px;
-    bottom: -50px; /* Ajustează după nevoie */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-">
-
-
-
-<!-- Buton ON/OFF -->
-    <button id="musicToggle" style="
-        padding: 8px 15px;
-        background: #f44336;
-        color: white;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-    ">🔇 OFF</button>
-
-<!-- Bara de volum -->
+<div style="position: absolute; left: 20px; bottom: 60px; width: 80%; z-index: 1000;">
     <input 
         type="range" 
         id="volumeControl" 
         min="0" 
         max="1" 
         step="0.1" 
-        value="0.5"
-        style="width: 100px;"
+        value="0.3"
+        style="width: 100%"
     >
 </div>
-
-
 
 <script>
     // Control volum
@@ -270,8 +232,6 @@ bgMusic.addEventListener('ended', () => {
         bgMusic.volume = e.target.value;
     });
 </script>
-
-
 
 </script>
 <script src="script.js"></script>
