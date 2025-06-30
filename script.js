@@ -1,3 +1,4 @@
+
 const container = document.querySelector('.twentytwenty-container');
 const before = document.querySelector('.twentytwenty-before');
 const handle = document.querySelector('.twentytwenty-handle');
@@ -45,3 +46,31 @@ const stopDragging = () => {
 };
 document.addEventListener('mouseup', stopDragging);
 document.addEventListener('touchend', stopDragging);
+
+
+const bgMusic = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
+const volumeControl = document.getElementById('volumeControl');
+
+// Buton ON/OFF
+musicToggle.addEventListener('click', () => {
+    if (bgMusic.paused) {
+        bgMusic.play();
+        musicToggle.textContent = '🔊 ON';
+        musicToggle.style.background = '#4CAF50';
+    } else {
+        bgMusic.pause();
+        musicToggle.textContent = '🔇 OFF';
+        musicToggle.style.background = '#f44336';
+    }
+});
+
+// Control volum
+volumeControl.addEventListener('input', () => {
+    bgMusic.volume = volumeControl.value;
+});
+
+// Permite redarea la primul click pe pagină
+document.addEventListener('click', () => {
+    bgMusic.volume = 0.5;
+}, { once: true });
