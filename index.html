@@ -129,26 +129,7 @@
 
 </head>
 <body>
-    <audio id="bgMusic" src="audio/Peter_Green.mp3"></audio>
-    <button id="musicToggle">🔊 ON</button>
-<button id="musicToggle" class="off">🔇 OFF</button>
-    <script>
-        const bgMusic = document.getElementById('bgMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        
-        // Pornește la primul click pe pagină
-        document.addEventListener('click', () => {
-            bgMusic.volume = 0.3;
-        }, { once: true });
-        
-        // Buton ON/OFF
-        musicToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            bgMusic.paused ? bgMusic.play() : bgMusic.pause();
-            musicToggle.textContent = bgMusic.paused ? '🔇 OFF' : '🔊 ON';
-            musicToggle.style.background = bgMusic.paused ? '#4CAF50' : '#f44336';
-        });
-    </script>
+    
 
 <script>
     // Control volum
@@ -174,7 +155,11 @@
         </div>
     </div>
 </div>
-<script>
+
+
+
+    
+// Monitorizare evenimente audio<script>
 // Varianta 100% funcțională (cu debug inclus)
 const bgMusic = document.getElementById('bgMusic');
 const musicToggle = document.getElementById('musicToggle');
@@ -196,19 +181,7 @@ musicToggle.addEventListener('click', function() {
             })
             .catch(e => {
                 console.error("Eroare play():", e);
-                alert("Browserul necesită un click în pagină pentru a porni muzica!");
-            });
-    } else {
-        bgMusic.pause();
-        musicToggle.textContent = '🔇 OFF'; 
-        musicToggle.style.background = '#f44336';
-        wasPlaying = false;
-    }
-    
-    console.log("Stare după click:", bgMusic.paused ? "pausat" : "redare");
-});
-
-// Monitorizare evenimente audio
+                alert("Browseru
 bgMusic.addEventListener('play', () => console.log("Muzica a început"));
 bgMusic.addEventListener('pause', () => console.log("Muzica oprită"));
 bgMusic.addEventListener('ended', () => {
