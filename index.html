@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
 <meta charset="UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
@@ -8,8 +9,11 @@
     <title>1990 vs 2025</title>
 
 
-    
-    <style>
+
+
+
+
+<style>
         /* Stiluri generale (desktop + mobil) */
         #musicControls {
             position: relative;
@@ -19,17 +23,37 @@
             gap: 10px;
             align-items: center;
         }
-        #musicToggle {
-            padding: 8px 15px;
-            background: #f44336;
-            color: white;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-        }
+      
+#musicToggle {
+    width: 25px;
+    height: 22px;
+    font-size: 12px;
+}
+
+#musicToggle:hover {
+    transform: scale(0.95);
+    opacity: 0.9;
+}
+
         #volumeControl {
             width: 100px;
         }
+
+#volumeControl {
+    -webkit-appearance: none;
+    height: 3px;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#volumeControl::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 
         /* Ajustări doar pentru mobil */
         @media (max-width: 768px) {
@@ -44,7 +68,7 @@
     </style>
 
 <style>
-        /* Container principal */
+        /* Container principal aliniat la stânga */
         .twentytwenty-container {
             width: 800px;
             height: 600px;
@@ -54,7 +78,10 @@
 /* Top | Right | Bottom | Left */
         }
 
-        /* Imagini */
+       
+
+
+ /* Imagini */
         .twentytwenty-before-container {
             position: absolute;
             top: 0;
@@ -129,7 +156,7 @@
             transform: rotate(180deg);
         }
 .twentytwenty-handle:hover {
-    width: 35px; /* Lățime ușor mărită */
+    width: 40px; /* Lățime ușor mărită */
     transition: all 0.2s ease;
 }
 .twentytwenty-handle:hover .handle-line {
@@ -147,7 +174,7 @@
 </head>
 <body>
    
- <!-- Containerul -->
+ <!-- Containerul tău cu imagini -->
 
 <!-- Container principal acum aliniat la stânga -->
 <div class="twentytwenty-container">
