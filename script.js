@@ -56,11 +56,11 @@ document.addEventListener('touchend', stopDragging);
         document.getElementById('musicToggle').addEventListener('click', function() {
             if (bgMusic.paused) {
                 bgMusic.play();
-                this.textContent = '🔊'; 
+                this.textContent = '🔊';
                 
             } else {
                 bgMusic.pause();
-                this.textContent = '🔇'; 
+                this.textContent = '🔇';
                
             }
         });
