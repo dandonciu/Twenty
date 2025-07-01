@@ -11,38 +11,28 @@
             gap: 10px;
             align-items: center;
         }
-      
-#musicToggle {
-    width: 25px;
-    height: 22px;
-    font-size: 12px;
-}
-
-#musicToggle:hover {
-    transform: scale(0.95);
-    opacity: 0.9;
-}
-
+        #musicToggle {
+            padding: 8px 15px;
+            background: #f44336;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
         #volumeControl {
             width: 100px;
         }
 
-#volumeControl {
-    -webkit-appearance: none;
-    height: 3px;
-    background: rgba(0, 0, 0, 0.1);
-}
-
-#volumeControl::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 12px;
-    height: 12px;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-
+        /* Ajustări doar pentru mobil */
+        @media (max-width: 768px) {
+            #musicToggle {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+            #volumeControl {
+                width: 80px;
+            }
+        }
     </style>
 
 <style>
