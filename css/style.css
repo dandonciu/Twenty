@@ -93,7 +93,6 @@
   border-color: transparent white transparent transparent;
   filter: drop-shadow(0 0 3px rgba(0,0,0,0.9));
 }
-
 .controls {
   display: flex;
   flex-wrap: wrap;
@@ -103,24 +102,32 @@
 }
 
 #musicToggle {
-  padding: 10px 20px;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 20px;
+  padding: 6px 12px;
+  background: none;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 18px;
 }
 
 #volumeControl {
   width: 200px;
 }
 
-/* Responsivitate */
+/* Mobil: Buton + slider unul sub altul, centrate */
 @media (max-width: 600px) {
-  .twentytwenty-container {
-    height: 300px;
+  .controls {
+    flex-direction: column;
+    align-items: center;
   }
+
   #volumeControl {
-    width: 100%;
+    width: 90%;
+  }
+
+  #musicToggle {
+    width: auto;
   }
 }
+
