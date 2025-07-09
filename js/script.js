@@ -1,8 +1,6 @@
-
 const container = document.querySelector('.twentytwenty-container');
-const before = document.querySelector('.twentytwenty-before');
-const handle = document.querySelector('.twentytwenty-handle');
-let isDragging = false;
+const before = container.querySelector('.twentytwenty-before');
+const handle = container.querySelector('.twentytwenty-handle');
 
 function updatePosition(clientX) {
   const rect = container.getBoundingClientRect();
@@ -13,41 +11,29 @@ function updatePosition(clientX) {
   handle.style.left = `${percent}%`;
 }
 
-// Drag events
-handle.addEventListener('mousedown', e => { isDragging = true; e.preventDefault(); });
-handle.addEventListener('touchstart', e => { isDragging = true; e.preventDefault(); updatePosition(e.touches[0].clientX); });
+let isDragging = false;
 
-document.addEventListener('mousemove', e => { if (isDragging) updatePosition(e.clientX); });
-document.addEventListener('touchmove', e => { if (isDragging) { e.preventDefault(); updatePosition(e.touches[0].clientX); } }, { passive: false });
+handle.addEventListener('mousedown', e => {
+  isDragging = true;
+  e.preventDefault();
+});
+
+handle.addEventListener('touchstart', e => {
+  isDragging = true;
+  e.preventDefault();
+  updatePosition(e.touches[0].clientX);
+});
+
+document.addEventListener('mousemove', e => {
+  if (isDragging) updatePosition(e.clientX);
+});
+
+document.addEventListener('touchmove', e => {
+  if (isDragging) {
+    e.preventDefault();
+    updatePosition(e.touches[0].clientX);
+  }
+}, { passive: false });
 
 document.addEventListener('mouseup', () => isDragging = false);
 document.addEventListener('touchend', () => isDragging = false);
-
-// Muzică
-const bgMusic = document.getElementById('bgMusic');
-const musicToggle = document.getElementById('musicToggle');
-const volumeControl = document.getElementById('volumeControl');
-
-bgMusic.volume = volumeControl.value;
-
-musicToggle.addEventListener('click', () => {
-  if (bgMusic.paused) {
-    bgMusic.play();
-    musicToggle.textContent = '🔊';
-  } else {
-    bgMusic.pause();
-    musicToggle.textContent = '🔇';
-  }
-});
-
-volumeControl.addEventListener('input', () => {
-  bgMusic.volume = volumeControl.value;
-});
-
-// Redare automată la primul click
-document.addEventListener('touchstart', () => {
-  if (bgMusic.paused) {
-    bgMusic.play().catch(() => {});
-  }
-}, { once: true });
-
