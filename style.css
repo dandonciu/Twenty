@@ -71,17 +71,18 @@ dar păstrând imaginile MARI.
 
 /* 
 Butonul de ON/OFF
+OBIECTIV 1: Mai mic, fără culoare de fundal, doar chenar.
 */
 #musicToggle {
     background-color: transparent;
-    border: 2px solid #aaa; /* Chenar gri */
+    border: none; /* Am scos chenarul */
     color: #888; /* Culoarea iconiței */
     border-radius: 50%;
-    width: 35px; /* Mai mic */
-    height: 35px; /* Mai mic */
+    width: 35px;
+    height: 35px;
     padding: 0;
     cursor: pointer;
-    font-size: 16px; /* Mărime iconiță ajustată */
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
