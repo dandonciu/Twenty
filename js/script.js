@@ -45,5 +45,9 @@ volumeControl.addEventListener('input', () => {
 });
 
 // Redare automată la primul click
-document.addEventListener('click', () => bgMusic.play().catch(() => {}), { once: true });
+document.addEventListener('touchstart', () => {
+  if (bgMusic.paused) {
+    bgMusic.play().catch(() => {});
+  }
+}, { once: true });
 
