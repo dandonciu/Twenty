@@ -3,16 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1990 vs 1990+35</title>
-    <!-- Legătura către singurul nostru fișier CSS -->
+    <title>TwentyTwenty</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Wrapper-ul care rezolvă totul -->
     <div class="main-wrapper">
 
-        <!-- Containerul tău original de imagini -->
         <div class="twentytwenty-container">
             <div class="twentytwenty-before-container">
                 <div class="twentytwenty-before">
@@ -31,31 +28,25 @@
             </div>
         </div>
 
-        <!-- Controalele audio, acum frumos grupate -->
         <div class="audio-controls">
-            <button id="musicToggle">🔇 OFF</button>
+            <!-- PUNCTUL 3: Am scos textul inițial din buton -->
+            <button id="musicToggle">🔇</button>
             <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.3">
         </div>
 
     </div>
 
-    <!-- Elementul audio, ascuns -->
     <audio id="bgMusic" loop src="audio/Peter_Green.mp3"></audio>
 
-    <!-- Scriptul tău original pentru slider-ul de imagini -->
     <script src="script.js"></script>
     
-    <!-- Scriptul tău original pentru muzică (ușor curățat) -->
     <script>
         const bgMusic = document.getElementById('bgMusic');
         const musicToggle = document.getElementById('musicToggle');
         const volumeControl = document.getElementById('volumeControl');
 
-        // Setează starea inițială a butonului și a volumului
-        musicToggle.style.background = '#f44336'; // Roșu
         bgMusic.volume = volumeControl.value;
 
-        // Funcționalitatea butonului ON/OFF
         musicToggle.addEventListener('click', () => {
             if (bgMusic.paused) {
                 bgMusic.play().catch(e => console.error("Redarea a eșuat:", e));
@@ -64,18 +55,20 @@
             }
         });
 
-        // Actualizează butonul în funcție de starea audio
+        // PUNCTUL 3: Actualizează DOAR iconița butonului, fără text
         bgMusic.addEventListener('play', () => {
-            musicToggle.textContent = '🔊 ON';
-            musicToggle.style.background = '#4CAF50'; // Verde
+            musicToggle.innerHTML = '🔊';
+            // Schimbăm culoarea chenarului pentru feedback vizual
+            musicToggle.style.borderColor = '#4CAF50';
+            musicToggle.style.color = '#4CAF50';
         });
 
         bgMusic.addEventListener('pause', () => {
-            musicToggle.textContent = '🔇 OFF';
-            musicToggle.style.background = '#f44336'; // Roșu
+            musicToggle.innerHTML = '🔇';
+            musicToggle.style.borderColor = '#888';
+            musicToggle.style.color = '#888';
         });
         
-        // Funcționalitatea slider-ului de volum
         volumeControl.addEventListener('input', () => {
             bgMusic.volume = volumeControl.value;
         });
