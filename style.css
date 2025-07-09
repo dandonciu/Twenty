@@ -1,1 +1,136 @@
+/* Stiluri generale pentru pagină */
+body {
+    margin: 0;
+    padding: 20px; /* Adaugă puțin spațiu pe margini */
+    background-color: #1a1a1a;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center; /* Centrează conținutul pe orizontală */
+    align-items: center;    /* Centrează conținutul pe verticală */
+    min-height: 100vh;
+}
 
+/* 
+Containerul principal care rezolvă TOT. 
+El ține la un loc și imaginile, și controalele audio.
+*/
+.main-wrapper {
+    width: 100%;
+    max-width: 800px; /* Lățimea maximă a containerului cu imagini */
+}
+
+/* Containerul de imagini (codul tău, ușor adaptat) */
+.twentytwenty-container {
+    width: 100%;
+    /* 
+    Folosim un truc pentru a menține proporția de 4:3 (ca 800x600).
+    Asta îl face responsiv.
+    */
+    aspect-ratio: 4 / 3; 
+    position: relative;
+    overflow: hidden;
+    cursor: ew-resize; /* Cursor de redimensionare pe tot containerul */
+}
+
+/* ---- Stilurile tale originale pentru imagini și handle, păstrate aproape intact ---- */
+.twentytwenty-before-container, .twentytwenty-after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.twentytwenty-before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 50% 0 0);
+}
+.twentytwenty-before-container { z-index: 1; }
+.twentytwenty-before img, .twentytwenty-after img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none; /* Previne selectarea imaginii la drag */
+}
+.twentytwenty-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 30px;
+    height: 100%;
+    transform: translateX(-50%);
+    z-index: 3;
+    pointer-events: none; /* Permite click-ul să treacă prin handle */
+}
+.handle-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: rgba(255,255,255,0.7);
+    transform: translateX(-50%);
+    transition: all 0.2s ease;
+}
+.handle-arrows {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.handle-arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 8px 6px 0;
+    border-color: transparent rgba(255,255,255,0.7) transparent transparent;
+    transition: all 0.2s ease;
+}
+.handle-arrow.right { transform: rotate(180deg); }
+.twentytwenty-container:hover .handle-line {
+    background: white;
+    box-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
+.twentytwenty-container:hover .handle-arrow {
+    border-color: transparent white transparent transparent;
+    filter: drop-shadow(0 0 3px rgba(0,0,0,0.9));
+}
+
+/* 
+Containerul pentru controalele audio.
+Acum stă cuminte sub imagini.
+*/
+.audio-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    gap: 15px; /* Spațiu elegant între buton și slider */
+}
+
+/* Butonul de ON/OFF */
+#musicToggle {
+    padding: 8px 15px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    min-width: 80px; /* Lățime minimă pentru a nu sări textul */
+    text-align: center;
+}
+
+/* Slider-ul de volum */
+#volumeControl {
+    width: 100%;
+    max-width: 200px; /* O lățime maximă rezonabilă */
+    cursor: pointer;
+}
