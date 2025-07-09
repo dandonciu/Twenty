@@ -1,260 +1,84 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1990 vs 1990+35</title>
-
-<style>
-        /* Container principal aliniat la stânga */
-        .twentytwenty-container {
-            width: 800px;
-            height: 600px;
-            position: relative;
-            overflow: hidden;
-            margin: 0 px 0 0 px 0 px; /* Elimină margin-auto pentru aliniere stânga */
-/* Top | Right | Bottom | Left */
-        }
-
-        /* Imagini */
-        .twentytwenty-before-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-        .twentytwenty-before {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            clip-path: inset(0 50% 0 0);
-        }
-        .twentytwenty-after {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        .twentytwenty-before img,
-        .twentytwenty-after img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Handle cu săgeți discrete */
-        .twentytwenty-handle {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 30px;
-            height: 100%;
-            transform: translateX(-50%);
-            cursor: ew-resize;
-            z-index: 3;
-        }
-        .handle-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            width: 3px;
-            height: 100%;
-            background: rgba(255,255,255,0.7);
-            transform: translateX(-50%);
-        }
-        .handle-arrows {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            pointer-events: none;
-        }
-        .handle-arrow {
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 6px 8px 6px 0;
-            border-color: transparent rgba(255,255,255,0.7) transparent transparent;
-        }
-        .handle-arrow.right {
-            transform: rotate(180deg);
-        }
-.twentytwenty-handle:hover {
-    width: 35px; /* Lățime ușor mărită */
-    transition: all 0.2s ease;
-}
-.twentytwenty-handle:hover .handle-line {
-    background: white;
-    width: 2px;
-    box-shadow: 0 0 10px rgba(255,255,255,0.8);
-}
-.twentytwenty-handle:hover .handle-arrow {
-    border-color: transparent white transparent transparent;
-    filter: drop-shadow(0 0 3px rgba(0,0,0,0.9));
-}
-
-    </style>
-   <style>
-        #musicToggle {
-            position: fixed; bottom: 20px; right: 20px;
-            padding: 12px; background: #4CAF50; color: white;
-            border: none; border-radius: 50px; cursor: pointer;
-        }
-    </style>
-
-<div style="position: absolute; left: 20px; bottom: 60px; width: 80%; z-index: 1000;">
-    <input 
-        type="range" 
-        id="volumeControl" 
-        min="0" 
-        max="1" 
-        step="0.1" 
-        value="0.3"
-        style="width: 100%"
-    >
-</div>
-
+    <!-- Legătura către singurul nostru fișier CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<button id="musicToggle" style="
-    margin-top: 10px;
-    padding: 8px 15px;
-    background: #f44336;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-">🔇 OFF</button>
-<audio id="bgMusic" loop src="audio/Peter_Green.mp3"></audio>
-<script>
-    // Control volum
-    document.getElementById('volumeControl').addEventListener('input', function(e) {
-        bgMusic.volume = e.target.value;
-    });
-</script>
-<!-- Container principal acum aliniat la stânga -->
-<div class="twentytwenty-container">
-    <div class="twentytwenty-before-container">
-        <div class="twentytwenty-before">
-            <img src="img/colaj1.jpg" alt="Before">
-        </div>
-    </div>
-    <div class="twentytwenty-after">
-        <img src="img/colaj2.jpg" alt="After">
-    </div>
-    <div class="twentytwenty-handle">
-        <div class="handle-line"></div>
-        <div class="handle-arrows">
-            <div class="handle-arrow left"></div>
-            <div class="handle-arrow right"></div>
-        </div>
-    </div>
-</div>
-<script>
-// Varianta 100% funcțională (cu debug inclus)
-const bgMusic = document.getElementById('bgMusic');
-const musicToggle = document.getElementById('musicToggle');
 
-// Inițializare
-bgMusic.volume = 0.3; // Setează volum mai mic
-let wasPlaying = false;
+    <!-- Wrapper-ul care rezolvă totul -->
+    <div class="main-wrapper">
 
-// Butonul principal
-musicToggle.addEventListener('click', function() {
-    console.log("Stare înainte de click:", bgMusic.paused ? "pausat" : "redare");
+        <!-- Containerul tău original de imagini -->
+        <div class="twentytwenty-container">
+            <div class="twentytwenty-before-container">
+                <div class="twentytwenty-before">
+                    <img src="img/colaj1.jpg" alt="Before">
+                </div>
+            </div>
+            <div class="twentytwenty-after">
+                <img src="img/colaj2.jpg" alt="After">
+            </div>
+            <div class="twentytwenty-handle">
+                <div class="handle-line"></div>
+                <div class="handle-arrows">
+                    <div class="handle-arrow left"></div>
+                    <div class="handle-arrow right"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controalele audio, acum frumos grupate -->
+        <div class="audio-controls">
+            <button id="musicToggle">🔇 OFF</button>
+            <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.3">
+        </div>
+
+    </div>
+
+    <!-- Elementul audio, ascuns -->
+    <audio id="bgMusic" loop src="audio/Peter_Green.mp3"></audio>
+
+    <!-- Scriptul tău original pentru slider-ul de imagini -->
+    <script src="script.js"></script>
     
-    if (bgMusic.paused) {
-        bgMusic.play()
-            .then(() => {
-                musicToggle.textContent = '🔊 ON';
-                musicToggle.style.background = '#4CAF50';
-                wasPlaying = true;
-            })
-            .catch(e => {
-                console.error("Eroare play():", e);
-                alert("Browserul necesită un click în pagină pentru a porni muzica!");
-            });
-    } else {
-        bgMusic.pause();
-        musicToggle.textContent = '🔇 OFF'; 
-        musicToggle.style.background = '#f44336';
-        wasPlaying = false;
-    } 
-    console.log("Stare după click:", bgMusic.paused ? "pausat" : "redare");
-});
+    <!-- Scriptul tău original pentru muzică (ușor curățat) -->
+    <script>
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const volumeControl = document.getElementById('volumeControl');
 
-
-<audio id="bgMusic" loop src="audio/Peter_Green.mp3"></audio>
-
-
-// Monitorizare evenimente audio
-bgMusic.addEventListener('play', () => console.log("Muzica a început"));
-bgMusic.addEventListener('pause', () => console.log("Muzica oprită"));
-bgMusic.addEventListener('ended', () => {
-    musicToggle.textContent = '🔇 OFF';
-    console.log("Muzica s-a terminat natural");
-});
-<div style="position: absolute; left: 20px; bottom: 60px; width: 80%; z-index: 1000;">
-    <input 
-        type="range" 
-        id="volumeControl" 
-        min="0" 
-        max="1" 
-        step="0.1" 
-        value="0.3"
-        style="width: 100%"
-    >
-</div>
-
-<script>
-    // Control volum
-    document.getElementById('volumeControl').addEventListener('input', function(e) {
-        bgMusic.volume = e.target.value;
-    });
-</script>
-
-</script>
-<script src="script.js"></script>
-<script>
-const bgMusic = document.getElementById('bgMusic');
-const musicToggle = document.getElementById('musicToggle');
-const volumeControl = document.getElementById('volumeControl');
-
-// Buton ON/OFF
-musicToggle.addEventListener('click', () => {
-    if (bgMusic.paused) {
-        bgMusic.play();
-        musicToggle.textContent = '🔊 ON';
-        musicToggle.style.background = '#4CAF50'; // Verde
-    } else {
-        bgMusic.pause();
-        musicToggle.textContent = '🔇 OFF';
+        // Setează starea inițială a butonului și a volumului
         musicToggle.style.background = '#f44336'; // Roșu
-    }
-});
+        bgMusic.volume = volumeControl.value;
 
-// Volum
-volumeControl.addEventListener('input', () => {
-    bgMusic.volume = volumeControl.value;
-});
+        // Funcționalitatea butonului ON/OFF
+        musicToggle.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play().catch(e => console.error("Redarea a eșuat:", e));
+            } else {
+                bgMusic.pause();
+            }
+        });
 
-// Permite redarea la primul click pe pagină
-document.addEventListener('click', () => {
-    bgMusic.volume = 0.5;
-}, { once: true });
-</script>
+        // Actualizează butonul în funcție de starea audio
+        bgMusic.addEventListener('play', () => {
+            musicToggle.textContent = '🔊 ON';
+            musicToggle.style.background = '#4CAF50'; // Verde
+        });
+
+        bgMusic.addEventListener('pause', () => {
+            musicToggle.textContent = '🔇 OFF';
+            musicToggle.style.background = '#f44336'; // Roșu
+        });
+        
+        // Funcționalitatea slider-ului de volum
+        volumeControl.addEventListener('input', () => {
+            bgMusic.volume = volumeControl.value;
+        });
+    </script>
 </body>
 </html>
