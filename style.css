@@ -1,29 +1,54 @@
 /* Stiluri generale pentru pagină */
 body {
     margin: 0;
-    padding: 20px;
-    background-color: #ffffff; /* PUNCTUL 2: Background alb */
+    padding: 0; /* Am scos padding-ul pentru a lăsa conținutul să ocupe tot spațiul */
+    background-color: #ffffff; 
 }
 
 /* 
-Containerul principal. 
-PUNCTUL 4: Am scos centrarea automată. Acum stă la stânga.
+Containerul principal - acum aliniat la stânga, fără lățime maximă pe mobil 
 */
 .main-wrapper {
-    width: 100%;
-    max-width: 800px; /* Lățimea maximă a containerului cu imagini */
-    /* margin: 0 auto; - Am scos asta pentru aliniere la stânga */
+    /* Nu mai are max-width, se va întinde cât are nevoie */
 }
 
-/* Containerul de imagini */
+/* 
+Containerul de imagini
+OBIECTIV 2: L-am făcut să aibă o lățime fixă, ca înainte.
+Pe mobil, va fi mai lat decât ecranul, forțând scroll-ul orizontal,
+dar păstrând imaginile MARI.
+*/
 .twentytwenty-container {
-    width: 100%;
-    aspect-ratio: 4 / 3; 
+    width: 800px; /* Lățime fixă, ca în codul tău original */
+    height: 600px; /* Înălțime fixă, ca în codul tău original */
     position: relative;
     overflow: hidden;
+    margin: 20px; /* Puțin spațiu pe margini */
 }
 
-/* ---- Stilurile tale originale pentru imagini ---- */
+/* Stiluri pentru handle-ul negru, vizibil */
+.twentytwenty-handle {
+    position: absolute; top: 0; left: 50%; width: 30px; height: 100%;
+    transform: translateX(-50%); z-index: 3;
+    cursor: ew-resize;
+}
+.handle-line {
+    position: absolute; left: 50%; top: 0; width: 3px; height: 100%;
+    background: rgba(0,0,0,0.4);
+}
+.handle-arrows {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%); width: 100%;
+    display: flex; justify-content: space-between;
+}
+.handle-arrow {
+    width: 0; height: 0; border-style: solid; border-width: 6px 8px 6px 0;
+    border-color: transparent rgba(0,0,0,0.4) transparent transparent;
+}
+.handle-arrow.right { transform: rotate(180deg); }
+
+
+/* Restul stilurilor pentru imagini, ca înainte */
 .twentytwenty-before-container, .twentytwenty-after {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;
 }
@@ -36,73 +61,30 @@ PUNCTUL 4: Am scos centrarea automată. Acum stă la stânga.
     width: 100%; height: 100%; object-fit: cover; display: block; user-select: none;
 }
 
-/* 
-Handle-ul cursorului. 
-PUNCTUL 1: Am scos 'pointer-events: none' și am adăugat cursorul corect.
-*/
-.twentytwenty-handle {
-    position: absolute; top: 0; left: 50%; width: 30px; height: 100%;
-    transform: translateX(-50%); z-index: 3;
-    cursor: ew-resize; /* Cursor de redimensionare stânga-dreapta */
-}
-.handle-line {
-    position: absolute; left: 50%; top: 0; width: 3px; height: 100%;
-    background: rgba(0,0,0,0.4); /* Linii negre pe fundal alb */
-    transform: translateX(-50%); transition: all 0.2s ease;
-}
-.handle-arrows {
-    position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%, -50%); width: 100%;
-    display: flex; justify-content: space-between;
-}
-.handle-arrow {
-    width: 0; height: 0; border-style: solid; border-width: 6px 8px 6px 0;
-    border-color: transparent rgba(0,0,0,0.4) transparent transparent; /* Săgeți negre */
-    transition: all 0.2s ease;
-}
-.handle-arrow.right { transform: rotate(180deg); }
-.twentytwenty-handle:hover .handle-line {
-    background: #000000;
-    box-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-.twentytwenty-handle:hover .handle-arrow {
-    border-color: transparent #000000 transparent transparent;
-}
-
-/* 
-Containerul pentru controalele audio.
-PUNCTUL 4: Aliniere la stânga.
-*/
+/* Containerul pentru controalele audio */
 .audio-controls {
     display: flex;
     align-items: center;
-    /* justify-content: center; - Am scos asta */
-    padding: 15px 0; /* Spațiu doar sus și jos */
+    padding-left: 20px; /* Aliniat cu marginea containerului de imagini */
     gap: 15px;
 }
 
 /* 
-Butonul de ON/OFF.
-PUNCTUL 3: Fără culoare, fără text (se va adăuga din JS), mai mic.
+Butonul de ON/OFF
 */
 #musicToggle {
     background-color: transparent;
-    border: 2px solid #888; /* Chenar gri vizibil */
+    border: 2px solid #aaa; /* Chenar gri */
     color: #888; /* Culoarea iconiței */
-    border-radius: 50%; /* Îl face perfect rotund */
-    width: 40px;
-    height: 40px;
+    border-radius: 50%;
+    width: 35px; /* Mai mic */
+    height: 35px; /* Mai mic */
     padding: 0;
     cursor: pointer;
-    font-size: 18px; /* Mărimea iconiței */
+    font-size: 16px; /* Mărime iconiță ajustată */
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
-}
-#musicToggle:hover {
-    border-color: #000;
-    color: #000;
 }
 
 /* Slider-ul de volum */
