@@ -40,7 +40,7 @@
 
     <script src="script.js"></script>
     
-    <script>
+<script>
         const bgMusic = document.getElementById('bgMusic');
         const musicToggle = document.getElementById('musicToggle');
         const volumeControl = document.getElementById('volumeControl');
@@ -55,18 +55,13 @@
             }
         });
 
-        // PUNCTUL 3: Actualizează DOAR iconița butonului, fără text
+        // Actualizează DOAR iconița butonului
         bgMusic.addEventListener('play', () => {
             musicToggle.innerHTML = '🔊';
-            // Schimbăm culoarea chenarului pentru feedback vizual
-            musicToggle.style.borderColor = '#4CAF50';
-            musicToggle.style.color = '#4CAF50';
         });
 
         bgMusic.addEventListener('pause', () => {
             musicToggle.innerHTML = '🔇';
-            musicToggle.style.borderColor = '#888';
-            musicToggle.style.color = '#888';
         });
         
         volumeControl.addEventListener('input', () => {
