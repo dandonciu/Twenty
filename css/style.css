@@ -105,16 +105,17 @@
 
 @media (max-width: 600px) {
   .controls {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;  /* schimbăm din column în row */
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   #volumeControl {
-    width: 100%;
+    width: 70%;
   }
 
   #musicToggle {
-    width: 100%;
+    width: auto;
   }
 }
 
