@@ -93,41 +93,28 @@
   border-color: transparent white transparent transparent;
   filter: drop-shadow(0 0 3px rgba(0,0,0,0.9));
 }
+
 .controls {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-start; /* aliniere pe același rând */
   gap: 10px;
   margin-top: 20px;
 }
 
-#musicToggle {
-  padding: 6px 12px;
-  background: none;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
-#volumeControl {
-  width: 200px;
-}
-
-/* Mobil: Buton + slider unul sub altul, centrate */
 @media (max-width: 600px) {
   .controls {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 
   #volumeControl {
-    width: 90%;
+    width: 100%;
   }
 
   #musicToggle {
-    width: auto;
+    width: 100%;
   }
 }
 
