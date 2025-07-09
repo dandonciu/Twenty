@@ -28,12 +28,12 @@ document.addEventListener('mousemove', e => {
   if (isDragging) updatePosition(e.clientX);
 });
 
-document.addEventListener('touchmove', e => {
-  if (isDragging) {
-    e.preventDefault();
-    updatePosition(e.touches[0].clientX);
+// Permite pornirea audio la atingere pe mobil
+document.addEventListener('touchend', () => {
+  if (bgMusic.paused) {
+    bgMusic.play().catch(() => {});
   }
-}, { passive: false });
+}, { once: true });
 
 document.addEventListener('mouseup', () => isDragging = false);
 document.addEventListener('touchend', () => isDragging = false);
