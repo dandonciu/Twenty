@@ -65,7 +65,7 @@ dar păstrând imaginile MARI.
 .audio-controls {
     display: flex;
     align-items: center;
-    padding-left: 20px; /* Aliniat cu marginea containerului de imagini */
+    padding-left: 25px; /* Aliniat cu marginea containerului de imagini */
     gap: 5px;
 }
 
