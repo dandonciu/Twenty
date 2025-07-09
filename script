@@ -7,32 +7,24 @@ let isDragging = false;
 function updatePosition(clientX) {
     const rect = container.getBoundingClientRect();
     let x = clientX - rect.left;
-    
-    // Asigură că valoarea este între 0 și lățimea containerului
     x = Math.max(0, Math.min(x, rect.width));
-    
     const percent = (x / rect.width) * 100;
-    
     before.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
     handle.style.left = `${percent}%`;
 }
 
-// ------ MODIFICARE CHEIE: Acum tot containerul este interactiv ------
-
-// Pornire drag pe mouse
-container.addEventListener('mousedown', (e) => {
+// Mouse events
+handle.addEventListener('mousedown', (e) => {
     isDragging = true;
-    updatePosition(e.clientX); // Actualizează poziția la click
     e.preventDefault();
 });
 
-// Pornire drag pe touch
-container.addEventListener('touchstart', (e) => {
+// Touch events
+handle.addEventListener('touchstart', (e) => {
     isDragging = true;
-    updatePosition(e.touches[0].clientX);
     e.preventDefault();
-}, { passive: true });
-
+    updatePosition(e.touches[0].clientX); // Actualizează imediat la prima atingere
+});
 
 // Mișcare (atât pentru mouse, cât și pentru touch)
 document.addEventListener('mousemove', (e) => {
@@ -42,9 +34,9 @@ document.addEventListener('mousemove', (e) => {
 
 document.addEventListener('touchmove', (e) => {
     if (!isDragging) return;
+    e.preventDefault(); // Blochează scroll-ul
     updatePosition(e.touches[0].clientX);
-});
-
+}, { passive: false }); // *Important pentru Chrome pe Android*
 
 // Oprire dragging
 const stopDragging = () => {
@@ -52,4 +44,3 @@ const stopDragging = () => {
 };
 document.addEventListener('mouseup', stopDragging);
 document.addEventListener('touchend', stopDragging);
-document.addEventListener('mouseleave', stopDragging); // Oprește și dacă mouse-ul iese din pagină
