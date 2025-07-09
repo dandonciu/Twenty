@@ -1,121 +1,90 @@
-.twenty-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
+/* Stiluri generale pentru pagină */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333; /* O culoare de fundal neutră */
+    font-family: sans-serif;
+    overflow-x: hidden; /* Previne scroll-ul orizontal nedorit */
 }
 
+/* 
+Containerul principal care rezolvă problema de pe mobil.
+Folosim Flexbox pentru a alinia elementele.
+*/
+.main-container {
+    display: flex;
+    flex-direction: column; /* Forțează elementele să stea pe verticală */
+    align-items: center;    /* Le centrează pe orizontală */
+    width: 100%;
+    max-width: 900px; /* O lățime maximă pentru ecrane mari */
+    margin: 20px auto; /* Centrează containerul pe pagină */
+}
+
+/* Stil pentru containerul de imagini */
 .twentytwenty-container {
-  width: 100%;
-  max-width: 800px;
-  height: 600px;
-  position: relative;
-  overflow: hidden;
+    width: 100%;
+    height: auto; /* Permite containerului să-și ajusteze înălțimea */
+    box-sizing: border-box;
 }
 
-.twentytwenty-before-container,
-.twentytwenty-before,
-.twentytwenty-after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.twentytwenty-before {
-  clip-path: inset(0 50% 0 0);
-}
-
-.twentytwenty-before img,
-.twentytwenty-after img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.twentytwenty-handle {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 30px;
-  height: 100%;
-  transform: translateX(-50%);
-  cursor: ew-resize;
-  z-index: 3;
-}
-
-.handle-line {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 3px;
-  height: 100%;
-  background: rgba(255,255,255,0.7);
-  transform: translateX(-50%);
-}
-
-.handle-arrows {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-}
-
-.handle-arrow {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 6px 8px 6px 0;
-  border-color: transparent rgba(255,255,255,0.7) transparent transparent;
-}
-
-.handle-arrow.right {
-  transform: rotate(180deg);
-}
-
-.twentytwenty-handle:hover {
-  width: 35px;
-  transition: all 0.2s ease;
-}
-
-.twentytwenty-handle:hover .handle-line {
-  background: white;
-  width: 2px;
-  box-shadow: 0 0 10px rgba(255,255,255,0.8);
-}
-
-.twentytwenty-handle:hover .handle-arrow {
-  border-color: transparent white transparent transparent;
-  filter: drop-shadow(0 0 3px rgba(0,0,0,0.9));
-}
-
-.controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start; /* aliniere pe același rând */
-  gap: 10px;
-  margin-top: 20px;
-}
-
-@media (max-width: 600px) {
-  .controls {
-    flex-direction: row;  /* schimbăm din column în row */
-    flex-wrap: wrap;
+/* 
+Containerul pentru controalele audio.
+Acum va sta garantat sub imagini.
+*/
+.audio-controls {
+    display: flex;
+    align-items: center;
     justify-content: center;
-  }
-
-  #volumeControl {
-    width: 70%;
-  }
-
-  #musicToggle {
-    width: auto;
-  }
+    margin-top: 20px; /* Spațiu între imagini și controale */
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 }
 
+/* Stil pentru slider-ul de volum */
+#volume-slider {
+    margin-left: 15px;
+    width: 120px;
+    cursor: pointer;
+}
+
+/* Stiluri pentru butonul Play/Pause */
+#play-pause-btn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 50%; /* Îl face rotund */
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    position: relative; /* Necesar pentru a poziționa simbolurile Play/Pause */
+}
+
+/* Stilul pentru simbolul de PLAY (un triunghi) */
+.play-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 14px solid white;
+}
+
+/* Stilul pentru simbolul de PAUSE (două linii) */
+.pause-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px; /* Lățimea totală a celor două bare */
+    height: 14px;
+    border-left: 4px solid white;
+    border-right: 4px solid white;
+}
